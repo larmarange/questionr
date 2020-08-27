@@ -153,7 +153,9 @@ The command is meant to help users finding variables in large datasets.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>list of keywords, a character string (or several character strings), which can be formatted as a regular expression suitable for a <code>grep</code> pattern, or a vector of keywords; displays all variables if not specified</p></td>
+      <td><p>list of keywords, a character string (or several character strings), which can be
+formatted as a regular expression suitable for a <code><a href='https://rdrr.io/r/base/grep.html'>base::grep()</a></code> pattern, or a vector of keywords;
+displays all variables if not specified</p></td>
     </tr>
     <tr>
       <th>labels</th>
@@ -190,161 +192,141 @@ imported with <span class="pkg">foreign</span> or
     <div class='dont-index'><p><code>query</code> in the <code>memisc</code> package</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>lookfor</span>(<span class='no'>iris</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 1 Sepal.Length
-#&gt; 2  Sepal.Width
-#&gt; 3 Petal.Length
-#&gt; 4  Petal.Width
-#&gt; 5      Species</div><div class='input'><span class='co'># Look for a single keyword.</span>
-<span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"petal"</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 3 Petal.Length
-#&gt; 4  Petal.Width</div><div class='input'><span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"s"</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 1 Sepal.Length
-#&gt; 2  Sepal.Width
-#&gt; 5      Species</div><div class='input'><span class='co'># Look for with a regular expression</span>
-<span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"petal|species"</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 3 Petal.Length
-#&gt; 4  Petal.Width
-#&gt; 5      Species</div><div class='input'><span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"s$"</span>)</div><div class='output co'>#&gt;   variable
-#&gt; 5  Species</div><div class='input'><span class='co'># Look for with several keywords</span>
-<span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 3 Petal.Length
-#&gt; 4  Petal.Width
-#&gt; 5      Species</div><div class='input'><span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>)</div><div class='output co'>#&gt;       variable
-#&gt; 2  Sepal.Width
-#&gt; 3 Petal.Length
-#&gt; 4  Petal.Width
-#&gt; 5      Species</div><div class='input'><span class='co'># Labelled data</span>
+    <pre class="examples"><div class='input'><span class='fu'>lookfor</span>(<span class='no'>iris</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+#&gt; <span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 1      Sepal.Length —        dbl         range: 4.3 - 7.9
+#&gt; 2      Sepal.Width  —        dbl         range: 2 - 4.4  
+#&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
+#&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5
+#&gt; 5      Species      —        fct         setosa          
+#&gt; ​       ​             ​         ​            versicolor      
+#&gt; ​       ​             ​         ​            virginica       </div><div class='input'><span class='co'># Look for a single keyword.</span>
+<span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"petal"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
+#&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5</div><div class='input'><span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"s"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 1      Sepal.Length —        dbl         range: 4.3 - 7.9
+#&gt; 2      Sepal.Width  —        dbl         range: 2 - 4.4  
+#&gt; 5      Species      —        fct         setosa          
+#&gt; ​       ​             ​         ​            versicolor      
+#&gt; ​       ​             ​         ​            virginica       </div><div class='input'><span class='co'># Look for with a regular expression</span>
+<span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"petal|species"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
+#&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5
+#&gt; 5      Species      —        fct         setosa          
+#&gt; ​       ​             ​         ​            versicolor      
+#&gt; ​       ​             ​         ​            virginica       </div><div class='input'><span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"s$"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable NA.label NA.col_type NA.values 
+#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; 5      Species     —        fct         setosa    
+#&gt; ​       ​            ​         ​            versicolor
+#&gt; ​       ​            ​         ​            virginica </div><div class='input'><span class='co'># Look for with several keywords</span>
+<span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
+#&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5
+#&gt; 5      Species      —        fct         setosa          
+#&gt; ​       ​             ​         ​            versicolor      
+#&gt; ​       ​             ​         ​            virginica       </div><div class='input'><span class='fu'>lookfor</span>(<span class='no'>iris</span>, <span class='st'>"pet"</span>, <span class='st'>"sp"</span>, <span class='st'>"width"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable  NA.label NA.col_type NA.values       
+#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; 2      Sepal.Width  —        dbl         range: 2 - 4.4  
+#&gt; 3      Petal.Length —        dbl         range: 1 - 6.9  
+#&gt; 4      Petal.Width  —        dbl         range: 0.1 - 2.5
+#&gt; 5      Species      —        fct         setosa          
+#&gt; ​       ​             ​         ​            versicolor      
+#&gt; ​       ​             ​         ​            virginica       </div><div class='input'><span class='co'># Labelled data</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>fecondite</span>)
-<span class='fu'>lookfor</span>(<span class='no'>femmes</span>)</div><div class='output co'>#&gt;          variable
-#&gt; 1        id_femme
-#&gt; 2       id_menage
-#&gt; 3           poids
-#&gt; 4  date_entretien
-#&gt; 5  date_naissance
-#&gt; 6             age
-#&gt; 7          milieu
-#&gt; 8          region
-#&gt; 9            educ
-#&gt; 10        travail
-#&gt; 11          matri
-#&gt; 12       religion
-#&gt; 13        journal
-#&gt; 14          radio
-#&gt; 15             tv
-#&gt; 16   nb_enf_ideal
-#&gt; 17           test
-#&gt;                                                             label
-#&gt; 1                                       Identifiant de l'enquêtée
-#&gt; 2                                           Identifiant du ménage
-#&gt; 3                                               Poids statistique
-#&gt; 4                              Date de passation du questionnaire
-#&gt; 5                                               Date de naissance
-#&gt; 6  Âge révolu (en années) à la date de passation du questionnaire
-#&gt; 7                                             Milieu de résidence
-#&gt; 8                                             Région de résidence
-#&gt; 9                                              Niveau d'éducation
-#&gt; 10                                                  A un emploi ?
-#&gt; 11                                             Statut matrimonial
-#&gt; 12                                                       Religion
-#&gt; 13                                                Lit la presse ?
-#&gt; 14                                              Ecoute la radio ?
-#&gt; 15                                        Regarde la télévision ?
-#&gt; 16                                         Nombre idéal d'enfants
-#&gt; 17                      A déjà fait un test de dépistage du VIH ?</div><div class='input'><span class='fu'>lookfor</span>(<span class='no'>femmes</span>, <span class='st'>"date"</span>)</div><div class='output co'>#&gt;         variable                                                          label
-#&gt; 4 date_entretien                             Date de passation du questionnaire
-#&gt; 5 date_naissance                                              Date de naissance
-#&gt; 6            age Âge révolu (en années) à la date de passation du questionnaire</div><div class='input'><span class='co'># Display details</span>
-<span class='fu'>lookfor</span>(<span class='no'>femmes</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;          variable
-#&gt; 1        id_femme
-#&gt; 2       id_menage
-#&gt; 3           poids
-#&gt; 4  date_entretien
-#&gt; 5  date_naissance
-#&gt; 6             age
-#&gt; 7          milieu
-#&gt; 8          region
-#&gt; 9            educ
-#&gt; 10        travail
-#&gt; 11          matri
-#&gt; 12       religion
-#&gt; 13        journal
-#&gt; 14          radio
-#&gt; 15             tv
-#&gt; 16   nb_enf_ideal
-#&gt; 17           test
-#&gt;                                                             label
-#&gt; 1                                       Identifiant de l'enquêtée
-#&gt; 2                                           Identifiant du ménage
-#&gt; 3                                               Poids statistique
-#&gt; 4                              Date de passation du questionnaire
-#&gt; 5                                               Date de naissance
-#&gt; 6  Âge révolu (en années) à la date de passation du questionnaire
-#&gt; 7                                             Milieu de résidence
-#&gt; 8                                             Région de résidence
-#&gt; 9                                              Niveau d'éducation
-#&gt; 10                                                  A un emploi ?
-#&gt; 11                                             Statut matrimonial
-#&gt; 12                                                       Religion
-#&gt; 13                                                Lit la presse ?
-#&gt; 14                                              Ecoute la radio ?
-#&gt; 15                                        Regarde la télévision ?
-#&gt; 16                                         Nombre idéal d'enfants
-#&gt; 17                      A déjà fait un test de dépistage du VIH ?
-#&gt;                                                      class   type levels
-#&gt; 1                                                  numeric double       
-#&gt; 2                                                  numeric double       
-#&gt; 3                                                  numeric double       
-#&gt; 4                                                     Date double       
-#&gt; 5                                                     Date double       
-#&gt; 6                                                  numeric double       
-#&gt; 7                       haven_labelled, vctrs_vctr, double double       
-#&gt; 8                       haven_labelled, vctrs_vctr, double double       
-#&gt; 9                       haven_labelled, vctrs_vctr, double double       
-#&gt; 10 haven_labelled_spss, haven_labelled, vctrs_vctr, double double       
-#&gt; 11                      haven_labelled, vctrs_vctr, double double       
-#&gt; 12                      haven_labelled, vctrs_vctr, double double       
-#&gt; 13                      haven_labelled, vctrs_vctr, double double       
-#&gt; 14                      haven_labelled, vctrs_vctr, double double       
-#&gt; 15                      haven_labelled, vctrs_vctr, double double       
-#&gt; 16 haven_labelled_spss, haven_labelled, vctrs_vctr, double double       
-#&gt; 17 haven_labelled_spss, haven_labelled, vctrs_vctr, double double       
-#&gt;                                                                             value_labels
-#&gt; 1                                                                                       
-#&gt; 2                                                                                       
-#&gt; 3                                                                                       
-#&gt; 4                                                                                       
-#&gt; 5                                                                                       
-#&gt; 6                                                                                       
-#&gt; 7                                                                  [1] urbain; [2] rural
-#&gt; 8                                                  [1] Nord; [2] Est; [3] Sud; [4] Ouest
-#&gt; 9                                 [0] aucun; [1] primaire; [2] secondaire; [3] supérieur
-#&gt; 10                                                        [0] non; [1] oui; [9] manquant
-#&gt; 11 [0] célibataire; [1] mariée; [2] en concubinage; [3] veuve; [4] divorcée; [5] séparée
-#&gt; 12          [1] musulmane; [2] chrétienne; [3] protestante; [4] sans religion; [5] autre
-#&gt; 13                                                                      [0] non; [1] oui
-#&gt; 14                                                                      [0] non; [1] oui
-#&gt; 15                                                                      [0] non; [1] oui
-#&gt; 16                                                       [96] Ne sait pas; [99] manquant
-#&gt; 17                                                        [0] non; [1] oui; [9] manquant
-#&gt;    unique_values n_na na_values na_range
-#&gt; 1           2000    0                   
-#&gt; 2           1814    0                   
-#&gt; 3            351    0                   
-#&gt; 4            165    0                   
-#&gt; 5           1740    0                   
-#&gt; 6             36    0                   
-#&gt; 7              2    0                   
-#&gt; 8              4    0                   
-#&gt; 9              4    0                   
-#&gt; 10             3    7         9         
-#&gt; 11             6    0                   
-#&gt; 12             6    4                   
-#&gt; 13             2    0                   
-#&gt; 14             2    0                   
-#&gt; 15             2    0                   
-#&gt; 16            18    0                   
-#&gt; 17             3   29         9         </div></pre>
+<span class='fu'>lookfor</span>(<span class='no'>femmes</span>)</div><div class='output co'>#&gt; NA.pos NA.variable   NA.label                      NA.col_type NA.values        
+#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            
+#&gt; 1      id_femme      Identifiant de l'enquêtée     dbl         range: 1 - 2000  
+#&gt; 2      id_menage     Identifiant du ménage         dbl         range: 1 - 1814  
+#&gt; 3      poids         Poids statistique             dbl         range: 0.044629 …
+#&gt; 4      date_entreti… Date de passation du questio… date        range: 2011-12-0…
+#&gt; 5      date_naissan… Date de naissance             date        range: 1962-02-0…
+#&gt; 6      age           Âge révolu (en années) à la … dbl         range: 14 - 49   
+#&gt; 7      milieu        Milieu de résidence           dbl+lbl     [1] urbain       
+#&gt; ​       ​              ​                              ​            [2] rural        
+#&gt; 8      region        Région de résidence           dbl+lbl     [1] Nord         
+#&gt; ​       ​              ​                              ​            [2] Est          
+#&gt; ​       ​              ​                              ​            [3] Sud          
+#&gt; ​       ​              ​                              ​            [4] Ouest        
+#&gt; 9      educ          Niveau d'éducation            dbl+lbl     [0] aucun        
+#&gt; ​       ​              ​                              ​            [1] primaire     
+#&gt; ​       ​              ​                              ​            [2] secondaire   
+#&gt; ​       ​              ​                              ​            [3] supérieur    
+#&gt; 10     travail       A un emploi ?                 dbl+lbl     [0] non          
+#&gt; ​       ​              ​                              ​            [1] oui          
+#&gt; ​       ​              ​                              ​            [9] manquant     
+#&gt; 11     matri         Statut matrimonial            dbl+lbl     [0] célibataire  
+#&gt; ​       ​              ​                              ​            [1] mariée       
+#&gt; ​       ​              ​                              ​            [2] en concubina…
+#&gt; ​       ​              ​                              ​            [3] veuve        
+#&gt; ​       ​              ​                              ​            [4] divorcée     
+#&gt; ​       ​              ​                              ​            [5] séparée      
+#&gt; 12     religion      Religion                      dbl+lbl     [1] musulmane    
+#&gt; ​       ​              ​                              ​            [2] chrétienne   
+#&gt; ​       ​              ​                              ​            [3] protestante  
+#&gt; ​       ​              ​                              ​            [4] sans religion
+#&gt; ​       ​              ​                              ​            [5] autre        
+#&gt; 13     journal       Lit la presse ?               dbl+lbl     [0] non          
+#&gt; ​       ​              ​                              ​            [1] oui          
+#&gt; 14     radio         Ecoute la radio ?             dbl+lbl     [0] non          
+#&gt; ​       ​              ​                              ​            [1] oui          
+#&gt; 15     tv            Regarde la télévision ?       dbl+lbl     [0] non          
+#&gt; ​       ​              ​                              ​            [1] oui          
+#&gt; 16     nb_enf_ideal  Nombre idéal d'enfants        dbl+lbl     [96] Ne sait pas 
+#&gt; ​       ​              ​                              ​            [99] manquant    
+#&gt; 17     test          A déjà fait un test de dépis… dbl+lbl     [0] non          
+#&gt; ​       ​              ​                              ​            [1] oui          
+#&gt; ​       ​              ​                              ​            [9] manquant     </div><div class='input'><span class='fu'>lookfor</span>(<span class='no'>femmes</span>, <span class='st'>"date"</span>)</div><div class='output co'>#&gt; NA.pos NA.variable   NA.label                      NA.col_type NA.values        
+#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            
+#&gt; 4      date_entreti… Date de passation du questio… date        range: 2011-12-0…
+#&gt; 5      date_naissan… Date de naissance             date        range: 1962-02-0…
+#&gt; 6      age           Âge révolu (en années) à la … dbl         range: 14 - 49   </div><div class='input'><span class='co'># Display details</span>
+<span class='fu'>lookfor</span>(<span class='no'>femmes</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; NA.pos NA.variable   NA.label                      NA.col_type NA.values        
+#&gt; </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            
+#&gt; 1      id_femme      Identifiant de l'enquêtée     dbl         range: 1 - 2000  
+#&gt; 2      id_menage     Identifiant du ménage         dbl         range: 1 - 1814  
+#&gt; 3      poids         Poids statistique             dbl         range: 0.044629 …
+#&gt; 4      date_entreti… Date de passation du questio… date        range: 2011-12-0…
+#&gt; 5      date_naissan… Date de naissance             date        range: 1962-02-0…
+#&gt; 6      age           Âge révolu (en années) à la … dbl         range: 14 - 49   
+#&gt; 7      milieu        Milieu de résidence           dbl+lbl     [1] urbain       
+#&gt; ​       ​              ​                              ​            [2] rural        
+#&gt; 8      region        Région de résidence           dbl+lbl     [1] Nord         
+#&gt; ​       ​              ​                              ​            [2] Est          
+#&gt; ​       ​              ​                              ​            [3] Sud          
+#&gt; ​       ​              ​                              ​            [4] Ouest        
+#&gt; 9      educ          Niveau d'éducation            dbl+lbl     [0] aucun        
+#&gt; ​       ​              ​                              ​            [1] primaire     
+#&gt; ​       ​              ​                              ​            [2] secondaire   
+#&gt; ​       ​              ​                              ​            [3] supérieur    
+#&gt; 10     travail       A un emploi ?                 dbl+lbl     [0] non          
+#&gt; ​       ​              ​                              ​            [1] oui          
+#&gt; ​       ​              ​                              ​            [9] manquant     
+#&gt; 11     matri         Statut matrimonial            dbl+lbl     [0] célibataire  
+#&gt; ​       ​              ​                              ​            [1] mariée       
+#&gt; ​       ​              ​                              ​            [2] en concubina…
+#&gt; ​       ​              ​                              ​            [3] veuve        
+#&gt; ​       ​              ​                              ​            [4] divorcée     
+#&gt; ​       ​              ​                              ​            [5] séparée      
+#&gt; 12     religion      Religion                      dbl+lbl     [1] musulmane    
+#&gt; ​       ​              ​                              ​            [2] chrétienne   
+#&gt; ​       ​              ​                              ​            [3] protestante  
+#&gt; ​       ​              ​                              ​            [4] sans religion
+#&gt; ​       ​              ​                              ​            [5] autre        
+#&gt; 13     journal       Lit la presse ?               dbl+lbl     [0] non          
+#&gt; ​       ​              ​                              ​            [1] oui          
+#&gt; 14     radio         Ecoute la radio ?             dbl+lbl     [0] non          
+#&gt; ​       ​              ​                              ​            [1] oui          
+#&gt; 15     tv            Regarde la télévision ?       dbl+lbl     [0] non          
+#&gt; ​       ​              ​                              ​            [1] oui          
+#&gt; 16     nb_enf_ideal  Nombre idéal d'enfants        dbl+lbl     [96] Ne sait pas 
+#&gt; ​       ​              ​                              ​            [99] manquant    
+#&gt; 17     test          A déjà fait un test de dépis… dbl+lbl     [0] non          
+#&gt; ​       ​              ​                              ​            [1] oui          
+#&gt; ​       ​              ​                              ​            [9] manquant     </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
