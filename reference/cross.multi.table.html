@@ -74,7 +74,7 @@ series of binary variables." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.4</span>
       </span>
     </div>
 
@@ -136,17 +136,17 @@ choices question and a factor. The question's answers must be stored in a
 series of binary variables.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cross.multi.table</span>(
-  <span class='no'>df</span>,
-  <span class='no'>crossvar</span>,
-  <span class='kw'>weights</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>freq</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tfreq</span> <span class='kw'>=</span> <span class='st'>"col"</span>,
-  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>cross.multi.table</span><span class='op'>(</span>
+  <span class='va'>df</span>,
+  <span class='va'>crossvar</span>,
+  weights <span class='op'>=</span> <span class='cn'>NULL</span>,
+  digits <span class='op'>=</span> <span class='fl'>1</span>,
+  freq <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tfreq <span class='op'>=</span> <span class='st'>"col"</span>,
+  n <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  na.rm <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -204,24 +204,27 @@ based on the contingency table of crossvar in the respondants population.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Sample data frame</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>1337</span>)
-<span class='no'>sex</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Man"</span>,<span class='st'>"Woman"</span>),<span class='fl'>100</span>,<span class='kw'>replace</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-<span class='no'>jazz</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1</span>),<span class='fl'>100</span>,<span class='kw'>replace</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-<span class='no'>rock</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>),<span class='fl'>100</span>,<span class='kw'>replace</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-<span class='no'>electronic</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Y"</span>,<span class='st'>"N"</span>),<span class='fl'>100</span>,<span class='kw'>replace</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-<span class='no'>weights</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>100</span>)*<span class='fl'>2</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='no'>sex</span>,<span class='no'>jazz</span>,<span class='no'>rock</span>,<span class='no'>electronic</span>,<span class='no'>weights</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1337</span><span class='op'>)</span>
+<span class='va'>sex</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Man"</span>,<span class='st'>"Woman"</span><span class='op'>)</span>,<span class='fl'>100</span>,replace<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>jazz</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>1</span><span class='op'>)</span>,<span class='fl'>100</span>,replace<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>rock</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>FALSE</span><span class='op'>)</span>,<span class='fl'>100</span>,replace<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>electronic</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Y"</span>,<span class='st'>"N"</span><span class='op'>)</span>,<span class='fl'>100</span>,replace<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>weights</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>100</span><span class='op'>)</span><span class='op'>*</span><span class='fl'>2</span>
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>sex</span>,<span class='va'>jazz</span>,<span class='va'>rock</span>,<span class='va'>electronic</span>,<span class='va'>weights</span><span class='op'>)</span>
 <span class='co'>## Two-way frequency table on 'music' variables by sex</span>
-<span class='fu'>cross.multi.table</span>(<span class='no'>df</span>[,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"jazz"</span>, <span class='st'>"rock"</span>,<span class='st'>"electronic"</span>)], <span class='no'>df</span>$<span class='no'>sex</span>, <span class='kw'>true.codes</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"Y"</span>))</div><div class='output co'>#&gt;            Man Woman
+<span class='fu'>cross.multi.table</span><span class='op'>(</span><span class='va'>df</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"jazz"</span>, <span class='st'>"rock"</span>,<span class='st'>"electronic"</span><span class='op'>)</span><span class='op'>]</span>, <span class='va'>df</span><span class='op'>$</span><span class='va'>sex</span>, true.codes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"Y"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;            Man Woman
 #&gt; jazz        19    28
 #&gt; rock        23    26
 #&gt; electronic  25    26</div><div class='input'><span class='co'>## Column percentages based on respondants</span>
-<span class='fu'>cross.multi.table</span>(<span class='no'>df</span>[,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"jazz"</span>, <span class='st'>"rock"</span>,<span class='st'>"electronic"</span>)], <span class='no'>df</span>$<span class='no'>sex</span>, <span class='kw'>true.codes</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"Y"</span>), <span class='kw'>freq</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;             Man Woman
+<span class='fu'>cross.multi.table</span><span class='op'>(</span><span class='va'>df</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"jazz"</span>, <span class='st'>"rock"</span>,<span class='st'>"electronic"</span><span class='op'>)</span><span class='op'>]</span>, <span class='va'>df</span><span class='op'>$</span><span class='va'>sex</span>, true.codes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"Y"</span><span class='op'>)</span>, freq<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;             Man Woman
 #&gt; jazz       43.2  50.0
 #&gt; rock       52.3  46.4
 #&gt; electronic 56.8  46.4</div><div class='input'><span class='co'>## Row percentages based on respondants</span>
-<span class='fu'>cross.multi.table</span>(<span class='no'>df</span>[,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"jazz"</span>, <span class='st'>"rock"</span>,<span class='st'>"electronic"</span>)],
-                  <span class='no'>df</span>$<span class='no'>sex</span>, <span class='kw'>true.codes</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"Y"</span>), <span class='kw'>freq</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>tfreq</span><span class='kw'>=</span><span class='st'>"row"</span>, <span class='kw'>n</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;             Man Woman  n
+<span class='fu'>cross.multi.table</span><span class='op'>(</span><span class='va'>df</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"jazz"</span>, <span class='st'>"rock"</span>,<span class='st'>"electronic"</span><span class='op'>)</span><span class='op'>]</span>, 
+                  <span class='va'>df</span><span class='op'>$</span><span class='va'>sex</span>, true.codes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"Y"</span><span class='op'>)</span>, freq<span class='op'>=</span><span class='cn'>TRUE</span>, tfreq<span class='op'>=</span><span class='st'>"row"</span>, n<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;             Man Woman  n
 #&gt; jazz       40.4  59.6 47
 #&gt; rock       46.9  53.1 49
 #&gt; electronic 49.0  51.0 51</div></pre>
@@ -240,7 +243,7 @@ based on the contingency table of crossvar in the respondants population.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
